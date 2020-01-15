@@ -1,11 +1,13 @@
 importScripts('/PWA/src/js/idb.js');
 importScripts('/PWA/src/js/indexedDB.js');
 
-var CACHE_STATIC = 'static-v2.1';
-var CACHE_DYNAMIC = 'dynamic-v2.1';
+var CACHE_STATIC = 'static-v2.6';
+var CACHE_DYNAMIC = 'dynamic-v2.6';
 
 self.addEventListener('install', function (event) {
     // console.log('[SW] 安裝(Install) Service Worker!', event);
+    self.skipWaiting();
+    console.log('SKIP')
     event.waitUntil(
         caches.open(CACHE_STATIC)
             .then(function (cache) { 

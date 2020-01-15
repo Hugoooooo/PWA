@@ -13,6 +13,15 @@ if ('serviceWorker' in navigator) {
     console.log('瀏覽器不支援');
 }
 
+let refreshing = false
+navigator.serviceWorker.addEventListener('controllerchange', () => {
+    console.log('controllerchange');
+    if (refreshing) {
+        return
+    }
+    refreshing = true;
+    window.location.reload();
+});
 
 // FireBase
 var dataFromNetwork = false;
@@ -128,17 +137,17 @@ function displayNotification() {
 
 const applicationServerPublicKey = `BJ9iQa6H8hJB2t-LT62zO67BEnY-UjVyYSJ68S07oebSdkrpgZRZrVnKvzRxUcQyLioiq-q-gkRz5V-ivwwFSFY`;
 
-function urlB64ToUint8Array(base64String){
+function urlB64ToUint8Array(base64String) {
     var padding = '='.repeat((4 - base64String.length % 4) % 4);
     var base64 = (base64String + padding)
         .replace(/\-/g, '+')
-        .replace(/_/g,'/');
+        .replace(/_/g, '/');
     var rawData = window.atob(base64);
     var outputArr = new Uint8Array(rawData.length);
 
-    for (var i = 0; i < rawData.length; ++i ){
+    for (var i = 0; i < rawData.length; ++i) {
         outputArr[i] = rawData.charCodeAt(i);
-    }    
+    }
     return outputArr;
 }
 
@@ -147,12 +156,12 @@ function subscribeUser(swRegistration) {
     swRegistration.pushManager.subscribe({
         userVisibleOnly: true,
         applicationServerKey: applicationServerKey
-      })
-      .then(subscription => {
-        console.log('User is subscribed');
-        console.log(JSON.stringify(subscription));
-      })
-      .catch(err => {
-        console.log('Failed to subscribe the user: ', err);
-      });
-  }
+    })
+        .then(subscription => {
+            console.log('User is subscribed');
+            console.log(JSON.stringify(subscription));
+        })
+        .catch(err => {
+            console.log('Failed to subscribe the user: ', err);
+        });
+}
