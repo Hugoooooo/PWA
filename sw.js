@@ -1,5 +1,5 @@
-importScripts('/src/js/idb.js');
-importScripts('/src/js/indexedDB.js');
+importScripts('/PWA/src/js/idb.js');
+importScripts('/PWA/src/js/indexedDB.js');
 
 var CACHE_STATIC = 'static-v1.8';
 var CACHE_DYNAMIC = 'dynamic-v1.8';
@@ -10,10 +10,10 @@ self.addEventListener('install', function (event) {
         caches.open(CACHE_STATIC)
             .then(function (cache) { 
                 cache.addAll([
-                    '/index',
-                    '/src/js/app.js',
-                    '/src/js/post.js',
-                    '/src/offlinePage'
+                    '/PWA/index',
+                    '/PWA/src/js/app.js',
+                    '/PWA/src/js/post.js',
+                    '/PWA/src/offlinePage'
                 ]);
             })
     );
@@ -75,7 +75,7 @@ self.addEventListener('fetch', function (event) {
                                     .catch(function (err) {
                                         return caches.open(CACHE_STATIC)
                                             .then(function (cahce) {
-                                                return cache.match('/src/offlinePage');
+                                                return cache.match('/PWA/src/offlinePage');
                                             })
                                     })
                             });
@@ -84,7 +84,7 @@ self.addEventListener('fetch', function (event) {
                 .catch(function (err) {
                     return caches.open(CACHE_STATIC)
                         .then(function (cache) {
-                            return cache.match('/src/offlinePage');
+                            return cache.match('/PWA/src/offlinePage');
                         });
                 })
         );
@@ -156,7 +156,7 @@ self.addEventListener('push', event => {
     let title = 'Server Push1';
     let options = {
         body: 'push TEST',
-        icon: '/src/images/icons/demo-icon96.png',
+        icon: '/PWA/src/images/icons/demo-icon96.png',
     };
     if (event.data) {
         options = event.data.json();

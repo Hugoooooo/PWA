@@ -1,7 +1,7 @@
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
         navigator.serviceWorker
-            .register('/sw.js')
+            .register('/PWA/sw.js')
             .then(function (reg) {
                 console.log('Service Worker 註冊成功');
                 subscribeUser(reg);
