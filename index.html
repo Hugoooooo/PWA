@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PWAs Test Project</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-red.min.css" />
+    <link rel="icon" sizes="48x48" href="favicon.ico">
+    <link rel="stylesheet" href="./src/css/app.css">
+    <link rel="manifest" href="manifest.json">
+    <!-- IOS Setting -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="MyPWA">
+    <link rel="apple-touch-icon" href="src/images/icons/demo-icon48.png" sizes="48x48">
+    <link rel="apple-touch-icon" href="src/images/icons/demo-icon72.png" sizes="72x72">
+    <link rel="apple-touch-icon" href="src/images/icons/demo-icon96.png" sizes="96x96">
+    <link rel="apple-touch-icon" href="src/images/icons/demo-icon144.png" sizes="144x144">
+    <link rel="apple-touch-icon" href="src/images/icons/demo-icon168.png" sizes="168x168">
+    <link rel="apple-touch-icon" href="src/images/icons/demo-icon192.png" sizes="192x192">
+</head>
+
+<body>
+    <div id="app">
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <header class="mdl-layout__header">
+                <div class="mdl-layout__header-row">
+                    <!-- Title -->
+                    <span class="mdl-layout-title">PWAs Project</span>
+                    <!-- Add spacer, to align navigation to the right -->
+                    <div class="mdl-layout-spacer"></div>
+                    <!-- Navigation. We hide it in small screens. -->
+                    <nav class="mdl-navigation mdl-layout--large-screen-only">
+                        <a class="mdl-navigation__link" href="">Link</a>
+                        <a class="mdl-navigation__link" href="">Link</a>
+                    </nav>
+                </div>
+            </header>
+            <div class="mdl-layout__drawer">
+                <span class="mdl-layout-title">Title</span>
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a>
+                </nav>
+            </div>
+            <main class="mdl-layout__content">
+                <div id="create-post-form">
+                    <form>
+                        <div class="input-section mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="title">
+                            <label class="mdl-textfield__label" for="title" name="title">標題</label>
+                        </div>
+                        <div class="input-section mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                            id="post-content">
+                            <input class="mdl-textfield__input" type="text" id="content">
+                            <label class="mdl-textfield__label" for="content" name="content">內容sssss</label>
+                        </div>
+                        <br>
+                        <div>
+                            <button
+                                class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-color--accent"
+                                type="submit" id="post-btn">發佈
+                            </button>
+                        </div>
+                        <br>
+                        <div>
+                            <button class="mdl-button mdl-js-button mdl-button--fab" id="close-modal-btn" type="button">
+                                <i class="material-icons">close</i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div id="shared-moments"></div>
+                <!-- <img src="src/images/demo.jpg" class="main-image" alt="台北"> -->
+                <div class="page-content">
+                    <!-- <h2><a href="/src/about">PWA TEST</a></h2>-->
+                    <button class="enable-notifications" type="button" style="display: none;">Active Notify</button> 
+                    <input type="file" accept="image/*" capture="camera" />
+                </div>
+                <div class="add-button">
+                    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" onclick="postEvent()">
+                        <i class="material-icons">add</i>
+                    </button>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="./src/js/idb.js"></script>
+    <script src="./src/js/indexedDB.js"></script>
+    <script src="./src/js/app.js"></script>
+    <script src="./src/js/post.js"></script>
+    <!-- <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script> -->
+    <!-- <script>
+        const config = {
+            apiKey: "AIzaSyDtLLnxoDjlv2o0FIvQCNXH_ss6AJ6AlrE",
+            authDomain: "pwa-pratice-164f2.firebaseapp.com",
+            databaseURL: "https://pwa-pratice-164f2.firebaseio.com",
+            projectId: "pwa-pratice-164f2",
+            storageBucket: "pwa-pratice-164f2.appspot.com",
+            messagingSenderId: "1010191089891",
+            appId: "1:1010191089891:web:c10ebc7bdd227a623bc5d6",
+            measurementId: "G-BDR3CMV5H2"
+        };
+        firebase.initializeApp(config);
+        var database = firebase.database();
+        var messaging = firebase.messaging();
+        messaging.usePublicVapidKey('BNKM6YZGMdSHCNvc88-D96V6qVtkH8obkrLeaJmQQugqsmiRzN9JQ8Qjkm5Ok-oODEniYaSkjo__TLMoAyM-kS4');
+    </script> -->
+</body>
+
+</html>
