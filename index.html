@@ -78,8 +78,11 @@
                 <div class="page-content">
                     <!-- <h2><a href="/src/about">PWA TEST</a></h2>-->
                     <button class="enable-notifications" type="button" style="display: none;">Active Notify</button>
-                    <input type="file" accept="image/*" capture="camera" />
+                    <br><br>
                     <input type="file" accept="image/x-png,image/jpeg,image/gif" onchange="upload()" />
+                    <br><br>
+                    <button type="button" onclick="detectLang()">Detect Language</button>
+                    <h3 id="lang"></h3>
                 </div>
                 <div class="add-button">
                     <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" onclick="postEvent()">
@@ -94,6 +97,9 @@
     <script src="./src/js/app.js"></script>
     <script src="./src/js/post.js"></script>
     <script>
+        function detectLang() {
+            document.getElementById("lang").innerHTML = navigator.language;
+        }
         function upload() {
             return new Promise(async (resolve, reject) => {
                 const filePicker = document.querySelector('input');
